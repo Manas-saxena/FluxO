@@ -1,15 +1,23 @@
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-material';
 import ListItem from "../listItem/ListItem";
-import React ,{useRef} from 'react'
+import React ,{useRef , useState} from 'react'
 import "./list.scss";
 const List = () => {
-
-         const listRef = useRef()
+        const [slideNumber , setSlideNumber] = useState(0);
+         const listRef = useRef();
     const handleclick = (direction ) =>{
 
-        if(direction ==="left")
+            let distance = listRef.current.getBoundingClientRect().x -50;
+        if(direction ==="right" && slideNumber<5)
         {
-            listRef.current.style.transform = "translateX(-230px)"
+            setSlideNumber(slideNumber+1);
+            listRef.current.style.transform = `translateX(${-230 + distance}px)`
+        }
+        
+        if(direction ==='left' && slideNumber>0)
+        {
+            setSlideNumber(slideNumber-1);
+            listRef.current.style.transform = `translateX(${230 + distance}px)`
         }
     }
     return (
@@ -18,18 +26,18 @@ const List = () => {
             <div className="wrapper">
                 <ArrowBackIosOutlined className="sliderArrow left " onClick={()=>handleclick("left")} ></ArrowBackIosOutlined>
                 <div className='listitem' ref={listRef}>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
-                <ListItem></ListItem>
+                <ListItem index = {0} ></ListItem>
+                <ListItem index = {1}></ListItem>
+                <ListItem index = {2}></ListItem>
+                <ListItem index = {3}></ListItem>
+                <ListItem index = {4}></ListItem>
+                <ListItem index = {5}></ListItem>
+                <ListItem index = {6}></ListItem>
+                <ListItem index = {7}></ListItem>
+                <ListItem index = {8}></ListItem>
+                <ListItem index = {9}></ListItem>
                 </div>
-                <ArrowForwardIosOutlined className="sliderArrow right"  onClick={()=>handleclick("left")} ></ArrowForwardIosOutlined>
+                <ArrowForwardIosOutlined className="sliderArrow right"  onClick={()=>handleclick("right")} ></ArrowForwardIosOutlined>
 
             </div>
         </div>

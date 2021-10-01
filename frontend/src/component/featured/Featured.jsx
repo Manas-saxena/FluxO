@@ -35,7 +35,8 @@ const Featured = ({type}) => {
       />
       <div className="info">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="" />
-      <span className='desc'>
+          <br />
+      <span style={{color:"white"}} className='desc'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel error qui porro illum, ea vitae id molestiae adipisci maxime praesentium optio, placeat dolores. Tempora doloremque provident veritatis, alias sint odit!
       </span>
       <div className="buttons">
