@@ -6,8 +6,8 @@ import Watch from './pages/watch/Watch'
 function App() {
   return (
     <div className="App">
-    {/* <Home></Home> */}
-    <Register></Register>
+    <Home></Home>
+    {/* <Register></Register> */}
     {/* <Watch></Watch> */}
     {/* <Login></Login> */}
     </div>
