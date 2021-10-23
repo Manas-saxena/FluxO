@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const authRoute =require("./routes/auth")
 const dotenv = require("dotenv");
 const usersRoute = require("./routes/users");
+const moviesRoute = require("./routes/movie");
+const listRoute = require("./routes/list");
 dotenv.config();
 mongoose.connect(process.env.MONGO_URL,{
     useNewUrlParser:true,
@@ -18,6 +20,8 @@ mongoose.connect(process.env.MONGO_URL,{
 app.use(express.json());
 app.use("/api/auth" , authRoute);
 app.use("/api/users",usersRoute);
+app.use("/api/movies" , moviesRoute);
+app.use("/api/list" , listRoute);
 
 app.listen(8000 , ()=>{
     console.log("Server is running at 8000...");
