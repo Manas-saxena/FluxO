@@ -8,7 +8,7 @@ const Featured = ({type}) => {
         {
             type && (
                 <div className='category'>
-                    <span>{type==='movie' ? "Movies" : "Series"}</span>
+                    <span>{type==='movies' ? "Movies" : "Series"}</span>
                     <select name="genre" id="genre">
                         <option value="Adventure">Adventure</option>
                         <option value="Adventure">Comedy</option>
@@ -30,8 +30,9 @@ const Featured = ({type}) => {
 
         }
       <img
-        src="https://wallpapers-hub.art/wallpaper-images/240159.jpg"
+        src="https://wallpaperaccess.com/full/2703652.png"
         alt="movieimg"
+        
       />
       <div className="info">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="" />
