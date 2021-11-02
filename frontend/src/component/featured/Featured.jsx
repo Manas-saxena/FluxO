@@ -1,14 +1,32 @@
-import React from "react";
+import React,{useEffect , useState} from "react";
 import "./featured.scss";
+import axios from "axios";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlined from '@mui/icons-material/InfoOutlined';
 const Featured = ({type}) => {
+  const [content ,setContent] = useState({});
+
+  useEffect(() => {
+    const getRandomContent = async() =>{
+      try {
+        const res = await axios.get(`http://localhost:8000/api/movies/random?type=${type?type:""}`,{
+          headers:{
+            token :"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzNlMTQxN2NlNzcwNDZhMDk4ZTQ1MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTcwMTc2NywiZXhwIjoxNjM2MTMzNzY3fQ.GQjzU7A8jdvIY5OpjtAdSGOvT908dhJP2uyNES_vEIc"
+          }
+        })
+        setContent(res.data[0]);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getRandomContent();
+  }, [])
   return (
     <div className="featured">
         {
             type && (
                 <div className='category'>
-                    <span>{type==='movies' ? "Movies" : "Series"}</span>
+                    <span>{type==='movie' ? "Movies" : "Series"}</span>
                     <select name="genre" id="genre">
                         <option value="Adventure">Adventure</option>
                         <option value="Adventure">Comedy</option>
@@ -30,15 +48,15 @@ const Featured = ({type}) => {
 
         }
       <img
-        src="https://wallpaperaccess.com/full/2703652.png"
+        src={content.img}
         alt="movieimg"
         
       />
       <div className="info">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="" />
+          {/* <img src={content.imgTitle} alt="imgtitle" /> */}
           <br />
       <span style={{color:"white"}} className='desc'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel error qui porro illum, ea vitae id molestiae adipisci maxime praesentium optio, placeat dolores. Tempora doloremque provident veritatis, alias sint odit!
+         {content.desc}
       </span>
       <div className="buttons">
           <button className='play'>

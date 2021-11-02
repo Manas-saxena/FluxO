@@ -2,7 +2,7 @@ import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-materi
 import ListItem from "../listItem/ListItem";
 import React ,{useRef , useState} from 'react'
 import "./list.scss";
-const List = () => {
+const List = ({list}) => {
         const [slideNumber , setSlideNumber] = useState(0);
          const listRef = useRef();
     const handleclick = (direction ) =>{
@@ -22,20 +22,17 @@ const List = () => {
     }
     return (
         <div className='list'>
-            <span className='listtitle'>Continue to watch</span>
+            <span className='listtitle'>{list.title}</span>
             <div className="wrapper">
                 <ArrowBackIosOutlined className="sliderArrow left " onClick={()=>handleclick("left")} ></ArrowBackIosOutlined>
                 <div className='listitem' ref={listRef}>
-                <ListItem index = {0} ></ListItem>
-                <ListItem index = {1}></ListItem>
-                <ListItem index = {2}></ListItem>
-                <ListItem index = {3}></ListItem>
-                <ListItem index = {4}></ListItem>
-                <ListItem index = {5}></ListItem>
-                <ListItem index = {6}></ListItem>
-                <ListItem index = {7}></ListItem>
-                <ListItem index = {8}></ListItem>
-                <ListItem index = {9}></ListItem>
+                {
+                    list.content.map((item,i)=>(
+                <ListItem key = {i} item ={item} ></ListItem>
+
+    ))
+                }
+               
                 </div>
                 <ArrowForwardIosOutlined className="sliderArrow right"  onClick={()=>handleclick("right")} ></ArrowForwardIosOutlined>
 

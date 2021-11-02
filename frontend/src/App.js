@@ -21,12 +21,12 @@ function App() {
         {(user && (
           <>
             <Route path="/movies">
-              <Home type="movies"></Home>
+              <Home type="movie"></Home>
             </Route>
             <Route path="/series">
               <Home type="series"></Home>
             </Route>
-            <Route path="/watch">
+            <Route path="/watch/:id">
               <Watch></Watch>
             </Route>
           </>
