@@ -12,7 +12,7 @@ const ListItem = ({key ,item}) => {
             try {
                 const res = await axios.get("http://localhost:8000/api/movies/find/"+item,{
                 headers:{
-                    token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzNlMTQxN2NlNzcwNDZhMDk4ZTQ1MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTcwMTc2NywiZXhwIjoxNjM2MTMzNzY3fQ.GQjzU7A8jdvIY5OpjtAdSGOvT908dhJP2uyNES_vEIc"
+                    token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzNlMTQxN2NlNzcwNDZhMDk4ZTQ1MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNjE4Nzc0NiwiZXhwIjoxNjM2NjE5NzQ2fQ.dfcxa-fGTg5kODTxeGCvtjt8WcyCmDj6LN_Amw_KL3g"
                    }
                 })
                 setMovie(res.data);
@@ -28,7 +28,7 @@ const ListItem = ({key ,item}) => {
             <img src = {movie.img} alt="" />
                 {isHovered && (
                     <>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qRESnWFYYho" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qRESnWFYYho" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     {/* <iframe title="vimeo-player" src="https://youtu.be/qRESnWFYYho" width="640" height="360" frameborder="0" allowfullscreen></iframe> */}
                     {/* <iframe src={movie.trailer} title="YouTube video player" frameborder="0" allow="autoplay"></iframe> */}
                     {/* <video src="https://www.youtube.com/embed/SfZWFDs0LxA?controls=0" autoPlay loop></video> */}

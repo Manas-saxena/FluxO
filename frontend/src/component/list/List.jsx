@@ -20,6 +20,7 @@ const List = ({list}) => {
             listRef.current.style.transform = `translateX(${230 + distance}px)`
         }
     }
+    console.log(list.length )
     return (
         <div className='list'>
             <span className='listtitle'>{list.title}</span>
