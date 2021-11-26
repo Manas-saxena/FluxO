@@ -21,7 +21,7 @@ function Topbar() {
             <Settings/>
             <span className="topiconbadge">2</span>
           </div>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIbfDzNPtnPQF6u02N9c4z9QvRUPlIFGu91A&usqp=CAU" alt="user profile picture" className="topavatar" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIbfDzNPtnPQF6u02N9c4z9QvRUPlIFGu91A&usqp=CAU" alt="user" className="topavatar" />
         </div>
       </div>
     </div>
