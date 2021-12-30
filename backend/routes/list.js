@@ -31,8 +31,8 @@ router.delete("/:id", verify, async (req, res) => {
   }
 });
 //get
-router.get("/", verify, async (req, res) => {
-  
+router.get("/",verify, async (req, res) => {
+  // console.log(req.headers.token);  
     const typeQuery = req.query.type;
     const genreQuery =req.query.genre;
     let list = [];
