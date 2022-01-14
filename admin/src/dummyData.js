@@ -42,3 +42,14 @@ export const userdata = [
     amt: 2100,
   },
 ];
+
+export const rows = [
+  { id: 1, username: 'Snow', avatar:"https://images.pexels.com/photos/10200429/pexels-photo-10200429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", email:"hello@gmail.com",status:"Active",transaction:"$120" },
+  { id: 2, username: 'Snow', avatar:"https://images.pexels.com/photos/10200429/pexels-photo-10200429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", email:"hello@gmail.com",status:"Active",transaction:"$120" },
+  { id: 3, username: 'Snow', avatar:"https://images.pexels.com/photos/10200429/pexels-photo-10200429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", email:"hello@gmail.com",status:"Active",transaction:"$120" },
+  { id: 4, username: 'Snow', avatar:"https://images.pexels.com/photos/10200429/pexels-photo-10200429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", email:"hello@gmail.com",status:"Active",transaction:"$120" },
+  { id: 5, username: 'Snow', avatar:"https://images.pexels.com/photos/10200429/pexels-photo-10200429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", email:"hello@gmail.com",status:"Active",transaction:"$120" },
+  { id: 6, username: 'Snow', avatar:"https://images.pexels.com/photos/10200429/pexels-photo-10200429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", email:"hello@gmail.com",status:"Active",transaction:"$120" },
+  { id: 7, username: 'Snow', avatar:"https://images.pexels.com/photos/10200429/pexels-photo-10200429.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", email:"hello@gmail.com",status:"Active",transaction:"$120" },
+  
+];
