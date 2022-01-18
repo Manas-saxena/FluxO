@@ -7,7 +7,10 @@ const WidgetLg = () => {
   return (
     <div className="widgetLg">
       <h3 className="widgetLgTitle">Latest transactions</h3>
+       
+
       <table className="widgetLgTable">
+         <tbody>
         <tr className="WidgetLgTr">
           <th className="WidgetLgTh">Customer</th>
           <th className="WidgetLgTh">Date</th>
@@ -20,7 +23,7 @@ const WidgetLg = () => {
               src="https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
               alt=""
               className="WidgetLgImg"
-            />
+              />
             <span className="widgetLgName">Manas Saxena</span>
           </td>
           <td className="widgetLgDate">2 Jun 2021</td>
@@ -33,7 +36,7 @@ const WidgetLg = () => {
               src="https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
               alt=""
               className="WidgetLgImg"
-            />
+              />
             <span className="widgetLgName">Manas Saxena</span>
           </td>
           <td className="widgetLgDate">2 Jun 2021</td>
@@ -45,13 +48,14 @@ const WidgetLg = () => {
               src="https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
               alt=""
               className="WidgetLgImg"
-            />
+              />
             <span className="widgetLgName">Manas Saxena</span>
           </td>
           <td className="widgetLgDate">2 Jun 2021</td>
           <td className="widgetLgAmount">$122.00</td>
           <td className="widgetLgStatus"><Button type="Pending"></Button></td>
         </tr>
+      </tbody>
       </table>
     </div>
   );

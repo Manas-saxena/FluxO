@@ -57,16 +57,22 @@ router.get("/find/:id" , verify , async (req,res) =>{
 // getall
 router.get("/", verify,async (req, res) => {
     const query = req.query.new;
-  if (req.user.isAdmin) {
+ 
     try {
+         if (req.user.isAdmin) {
       const users = query
-        ? await User.find().sort({ _id: -1 }).limit(10)
+        ? await User.find().sort({ _id: -1 }).limit(5)
         : await User.find();
       res.status(200).json(users);
+         }
+         else
+         {
+              res.status(403).json("You are not an admin");
+         }
     } catch (error) {
       res.status(403).json("You are not an admin");
     }
-  }
+ 
 });
 // getuserstats
 router.get("/stats" ,verify ,async (req,res) =>{

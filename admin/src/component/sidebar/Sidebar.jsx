@@ -1,64 +1,38 @@
 import React from 'react'
 import "./sidebar.css"
-import {LineStyle,Timeline,TrendingUp} from "@mui/icons-material"
+import {Link} from "react-router-dom"
+import {LineStyle,Timeline,PlayArrow} from "@mui/icons-material"
 const Sidebar = () => {
     return (
-        <div class="sidebar">
+        <div className="sidebar">
             <div className="sidebarwrapper">
                 <div className="sidebarmenu">
                     <h3 className="sidebartitle">Dashboard</h3>
                         <ul className="sidebarlist">
                             <li className="sidebarlistitem active">
+                                  <Link to="/">
                                 <LineStyle className='sidebaricon'></LineStyle>
                                 Home
+                                </Link>
                             </li>
                             <li className="sidebarlistitem">
+                                 <Link to="/user">
+                                     
                                 <Timeline className='sidebaricon'></Timeline>
-                                Analytics
+                                Users
+                                 </Link>
                             </li>
                             <li className="sidebarlistitem">
-                                <TrendingUp className='sidebaricon'></TrendingUp>
-                                Sales
+                               <Link to="/movies">
+                               <PlayArrow className='sidebaricon'></PlayArrow>
+                                Movies
+                               </Link>
+                                
                             </li>
                         </ul>
                     
                 </div>
-                <div className="sidebarmenu">
-                    <h3 className="sidebartitle">Quick Menu</h3>
-                        <ul className="sidebarlist">
-                            <li className="sidebarlistitem active">
-                                <LineStyle className='sidebaricon'></LineStyle>
-                                Home
-                            </li>
-                            <li className="sidebarlistitem">
-                                <Timeline className='sidebaricon'></Timeline>
-                                Analytics
-                            </li>
-                            <li className="sidebarlistitem">
-                                <TrendingUp className='sidebaricon'></TrendingUp>
-                                Sales
-                            </li>
-                        </ul>
-                    
-                </div>
-                <div className="sidebarmenu">
-                    <h3 className="sidebartitle">Notification</h3>
-                        <ul className="sidebarlist">
-                            <li className="sidebarlistitem active">
-                                <LineStyle className='sidebaricon'></LineStyle>
-                                Home
-                            </li>
-                            <li className="sidebarlistitem">
-                                <Timeline className='sidebaricon'></Timeline>
-                                Analytics
-                            </li>
-                            <li className="sidebarlistitem">
-                                <TrendingUp className='sidebaricon'></TrendingUp>
-                                Sales
-                            </li>
-                        </ul>
-                    
-                </div>
+            
             </div>
         </div>
     )
