@@ -44,14 +44,18 @@ router.put("/:id", verify, async (req, res) => {
 
 //delete
 router.delete("/:id", verify, async (req, res) => {
+
   if (req.user.isAdmin) {
     try {
-      await Movie.findbyIdandDeleted(req.params.id);
+      
+      await Movie.findByIdAndDelete(req.params.id);
+   
       res.status(200).json("The movie has been deleted...");
     } catch (error) {
       res.status(500).json(error);
     }
-  } else {
+  }
+   else {
     res.status(403).json("you are not allowed ");
   }
 });

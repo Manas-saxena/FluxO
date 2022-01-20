@@ -1,10 +1,15 @@
 export const loginstart = () =>({
     type:"LOGIN_START",
 })
-export const loginstart = (user) =>({
+export const loginsuccess = (user) =>({
     type:"LOGIN_SUCCESS",
     payload:user,
 })
-export const loginstart = () =>({
+export const loginfailure = () =>({
     type:"FAILURE",
 })
+
+//logout
+export const logout = () => ({
+  type: "LOGOUT",
+});
