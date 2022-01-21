@@ -10,6 +10,7 @@ import NewUser from "./pages/newUser/NewUser"
 import ProductList from "./pages/productList/ProductList"
 import Product from "./pages/product/Product"
 import Login from "./pages/login/Login"
+import NewProduct from "./pages/newProduct/NewProduct"
 import {
   BrowserRouter as Router,
   Switch,
@@ -52,7 +53,7 @@ function App() {
                 <Product></Product>
               </Route>
               <Route path="/newproduct" exact>
-                <NewUser></NewUser>
+                <NewProduct></NewProduct>
               </Route>
             </div>
           </>
