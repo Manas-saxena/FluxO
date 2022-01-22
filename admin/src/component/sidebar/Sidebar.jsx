@@ -1,7 +1,7 @@
 import React from 'react'
 import "./sidebar.css"
 import {Link} from "react-router-dom"
-import {LineStyle,Timeline,PlayArrow} from "@mui/icons-material"
+import {LineStyle,Timeline,PlayArrow,List} from "@mui/icons-material"
 const Sidebar = () => {
     return (
         <div className="sidebar">
@@ -15,17 +15,24 @@ const Sidebar = () => {
                                 Home
                                 </Link>
                             </li>
-                            <li className="sidebarlistitem">
+                            {/* <li className="sidebarlistitem">
                                  <Link to="/user">
                                      
                                 <Timeline className='sidebaricon'></Timeline>
                                 Users
                                  </Link>
-                            </li>
+                            </li> */}
                             <li className="sidebarlistitem">
                                <Link to="/movies">
                                <PlayArrow className='sidebaricon'></PlayArrow>
                                 Movies
+                               </Link>
+                                
+                            </li>
+                            <li className="sidebarlistitem">
+                               <Link to="/list">
+                               <List className='sidebaricon'></List>
+                                List
                                </Link>
                                 
                             </li>

@@ -10,7 +10,10 @@ import NewUser from "./pages/newUser/NewUser"
 import ProductList from "./pages/productList/ProductList"
 import Product from "./pages/product/Product"
 import Login from "./pages/login/Login"
+import List from "./pages/List/List"
+import EditList from "./pages/editList/EditList"
 import NewProduct from "./pages/newProduct/NewProduct"
+import NewList from "./pages/newList/NewList"
 import {
   BrowserRouter as Router,
   Switch,
@@ -49,11 +52,20 @@ function App() {
               <Route path="/movies" exact>
                 <ProductList></ProductList>
               </Route>
-              <Route path="/product/:productId" exact>
-                <Product></Product>
+              <Route path="/list" exact>
+                <List></List>
+              </Route>
+              <Route path="/list/:listId" exact>
+                <EditList></EditList>
               </Route>
               <Route path="/newproduct" exact>
                 <NewProduct></NewProduct>
+              </Route>
+              <Route path="/product/:productId" exact>
+                <Product></Product>
+              </Route>
+              <Route path="/newlist" exact>
+                <NewList></NewList>
               </Route>
             </div>
           </>

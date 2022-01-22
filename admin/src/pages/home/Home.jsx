@@ -3,8 +3,6 @@ import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
 import "./home.css"
 import Chart from "../../component/charts/Chart"
-import Featuredinfo from '../../component/featuredinfo/Featuredinfo'
-import {userdata} from '../../dummyData';
 import WidgetSm from '../../widgetSm/WidgetSm';
 import WidgetLg from '../../widgetLg/WidgetLg';
 const Home = () => {
@@ -32,7 +30,12 @@ const Home = () => {
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTcxMDMxM2EzMGQ3MDk4MDkxZDc4ZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NDI1MzI5MzQsImV4cCI6MTY0Mjk2NDkzNH0.awozYYTNpRe3b-5gEDtpHuCbJZeuSKuijEbGSDCMe5o",
           },
         });
-       res.data.map(item=>{setUserStats(prev=>[...prev,{name:MONTHS[item._id-1],"New User":item.total}])})
+        const list = res.data.sort(function (a,b){
+          return a._id-b._id
+        })
+       list.map(item=>{setUserStats(prev=>[...prev,{name:MONTHS[item._id-1],"New User":item.total}])})
+       
+       
      } catch (error) {
        console.log(error)
      }
@@ -40,10 +43,12 @@ const Home = () => {
    }
    getStats();
   },[MONTHS])
-  
+
+  console.log(userStats)
     return (
         <div className='home'>
-<Featuredinfo></Featuredinfo>
+{/* <Featuredinfo></Featuredinfo> */}
+
         <Chart data={userStats} title="User Analytics" grid={true} dataKey="New User" ></Chart>
         <div className='homeWidgets'>
             <WidgetSm></WidgetSm>
