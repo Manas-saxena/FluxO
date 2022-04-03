@@ -9,10 +9,10 @@ const WidgetSm = () => {
         console.log("yes");
         
             const getNewUsers =async()=>{
-                console.log("yes");
+                const jwt = JSON.parse(localStorage.getItem("user")).accessToken;
                 const res = await axios.get("/users?new=true",{
                     headers:{
-                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTcxMDMxM2EzMGQ3MDk4MDkxZDc4ZiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MjUzNzQ0NSwiZXhwIjoxNjQyOTY5NDQ1fQ.u4g_Iahl3BIJ5x8E92vzYCUQYSiT2SgAuzEHP2HzeXk"
+                        token:"Bearer " + jwt 
                     }
                 })
                 console.log("yes");
@@ -30,8 +30,9 @@ const WidgetSm = () => {
             <ul className="widgetSmList">
                 {newUsers.map((user)=>(
                     <li className="widgetSmItem">
-                    <img src={user.profilePic || "https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-man-default-avatar-png-image_2813122.jpg"} alt="" className="widgetSmImg" />
                     <div className="widgetSmUser">
+                    <img src={user.profilePic || "https://png.pngtree.com/png-clipart/20210129/ourmid/pngtree-man-default-avatar-png-image_2813122.jpg"} alt="" className="widgetSmImg" />
+
                         <span className="widgetSmUsername">{user.username}</span>
                     </div>
                     <button className="widgetSmButton">

@@ -24,10 +24,12 @@ const Home = () => {
   useEffect(() => {
    const getStats = async() =>{
      try {
+       const jwt = JSON.parse(localStorage.getItem("user")).accessToken;
+
         const res = await axios.get("users/stats", {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTcxMDMxM2EzMGQ3MDk4MDkxZDc4ZiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NDI1MzI5MzQsImV4cCI6MTY0Mjk2NDkzNH0.awozYYTNpRe3b-5gEDtpHuCbJZeuSKuijEbGSDCMe5o",
+              "Bearer "+jwt,
           },
         });
         const list = res.data.sort(function (a,b){
@@ -52,7 +54,6 @@ const Home = () => {
         <Chart data={userStats} title="User Analytics" grid={true} dataKey="New User" ></Chart>
         <div className='homeWidgets'>
             <WidgetSm></WidgetSm>
-            <WidgetLg></WidgetLg>
         </div>
         </div>
     )

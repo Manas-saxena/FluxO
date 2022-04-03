@@ -3,17 +3,19 @@ import "./featured.scss";
 import axios from "axios";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlined from '@mui/icons-material/InfoOutlined';
-const Featured = ({type}) => {
+const Featured = ({type , setGenre}) => {
   const [content ,setContent] = useState({});
 
   useEffect(() => {
     const getRandomContent = async() =>{
       try {
+        const jwt = JSON.parse(localStorage.getItem("user")).accessToken;
         const res = await axios.get(`http://localhost:8000/api/movies/random?type=${type?type:""}`,{
           headers:{
-            token :"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzNlMTQxN2NlNzcwNDZhMDk4ZTQ1MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzODcyNjEyOCwiZXhwIjoxNjM5MTU4MTI4fQ.M12q1gelMeHEjsHUe-XrXzljODCOdoeFM18IQ9OQmtk"
+            token :"Bearer "+jwt
           }
         })
+        console.log(res.data);
         setContent(res.data[0]);
       } catch (error) {
         console.log(error)
@@ -27,7 +29,7 @@ const Featured = ({type}) => {
             type && (
                 <div className='category'>
                     <span>{type==='movie' ? "Movies" : "Series"}</span>
-                    <select name="genre" id="genre">
+                    <select name="genre" id="genre"  onChange={e=>setGenre(e.target.value)}>
                         <option value="Adventure">Adventure</option>
                         <option value="Adventure">Comedy</option>
                         <option value="Crime">Crime</option>
@@ -36,7 +38,7 @@ const Featured = ({type}) => {
                         <option value="horror">horror</option>
                         <option value="romance">romance</option>
                         <option value="sci-fi">sci-fi</option>
-                        <option value="thirller">thirller</option>
+                        <option value="thriller">thriller</option>
                         <option value="wester">wester</option>
                         <option value="animation">animation</option>
                         <option value="drama">drama</option>
@@ -50,7 +52,7 @@ const Featured = ({type}) => {
       <img
         src={content.img}
         alt="movieimg"
-        
+        style={{objectFit:"cover"}}
       />
       <div className="info">
           {/* <img src={content.imgTitle} alt="imgtitle" /> */}

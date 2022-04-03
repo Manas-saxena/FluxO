@@ -15,8 +15,8 @@ const Watch = ()=> {
                 Home
             </div>
             </Link>
-            <iframe width="100%" height="100%" src={movie.video} allowfullscreen></iframe>
-            {/* <video src={movie.video} className="video" autoPlay onProgress controls></video> */}
+            <iframe width="100%" height="100%" frameBorder='none' src={movie.video} allowFullScreen></iframe>
+            {/* <video  src={movie.video} className="video" autoPlay onProgress controls></video> */}
         </div>
     )
 }

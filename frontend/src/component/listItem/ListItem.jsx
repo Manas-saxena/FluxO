@@ -4,15 +4,16 @@ import "./listItem.scss"
 import axios from 'axios'
 import {Link} from "react-router-dom"
 const ListItem = ({key ,item}) => {
-    const index = key;
+    let index = key;
     const [isHovered , setIsHovered] = useState(false);
     const [movie, setMovie] = useState({});
     useEffect(() => {
         const getMovie = async() =>{
             try {
+                const jwt = JSON.parse(localStorage.getItem("user")).accessToken;
                 const res = await axios.get("http://localhost:8000/api/movies/find/"+item,{
                 headers:{
-                    token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzNlMTQxN2NlNzcwNDZhMDk4ZTQ1MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzODcyNjEyOCwiZXhwIjoxNjM5MTU4MTI4fQ.M12q1gelMeHEjsHUe-XrXzljODCOdoeFM18IQ9OQmtk"
+                    token: "Bearer " + jwt,
                    }
                 })
                 setMovie(res.data);
@@ -24,17 +25,15 @@ const ListItem = ({key ,item}) => {
     }, [item])
     return (
         <Link to={{pathname:`/watch/${movie._id}` , movie:movie}}>
-        <div className='listItem' style={{left: isHovered && index*225 -50 +index*2.5 }} onMouseEnter ={ () => setIsHovered(true)} onMouseLeave={ () => setIsHovered(false)}>
-            <img src = {movie.img} alt="" />
+        <div className='listItem' style={{left: isHovered && (index*225 -50 +index*2.5) }} onMouseEnter ={ () => setIsHovered(true)} onMouseLeave={ () => setIsHovered(false)}>
+            <img src = {movie.img} alt=""/>
                 {isHovered && (
                     <>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qRESnWFYYho" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                    {/* <iframe title="vimeo-player" src="https://youtu.be/qRESnWFYYho" width="640" height="360" frameborder="0" allowfullscreen></iframe> */}
-                    {/* <iframe src={movie.trailer} title="YouTube video player" frameborder="0" allow="autoplay"></iframe> */}
-                    {/* <video src="https://www.youtube.com/embed/SfZWFDs0LxA?controls=0" autoPlay loop></video> */}
+                    <iframe src={movie.video} allow='autoplay' frameborder="0" ></iframe>
             <div className="itemInfo">
                 <div className="icons">
-                    <PlayArrow className="icon"/>
+                    <Link  to={{pathname:`/watch/${movie._id}` , movie:movie}} style={{"color":"white"}}> <PlayArrow className="icon"/></Link>
+                   
                     <Add className="icon"/>
                     <ThumbUpOutlined className="icon"/>
                     <ThumbDownOutlined className="icon"/>
@@ -44,7 +43,7 @@ const ListItem = ({key ,item}) => {
                     <span className="limit">{movie.limit}+</span>
                     <span>{movie.year}</span>
                 </div>
-                <div className="desc">
+                <div className="desc" >
                     {movie.desc}
                     </div>
                 <div className="genre">{movie.genre}</div>

@@ -4,24 +4,29 @@ import Featured from '../../component/featured/Featured'
 import List from "../../component/list/List"
 import "./home.scss"
 import axios from "axios";
+import loader from "../../useables/loader.gif"
 const Home  = ({type}) => {
     const [lists , setLists] = useState([]);
     const [genre, setGenre] = useState(null);
-   
+    const [showloader , setShowloader] = useState(false);
     useEffect(() => {
        const getRandomLists = async ()=>{
+           setShowloader(true);
            try {
+              const jwt = JSON.parse(localStorage.getItem("user")).accessToken;
+                
               const res = await axios.get(`http://localhost:8000/api/list${type ? "?type=" + type:""}${genre ? "&genre=" +genre:""}`,{   
-
-             
-                           
                    headers:{
-                    token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzNlMTQxN2NlNzcwNDZhMDk4ZTQ1MCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzODcyNjEyOCwiZXhwIjoxNjM5MTU4MTI4fQ.M12q1gelMeHEjsHUe-XrXzljODCOdoeFM18IQ9OQmtk"
+                    token: "Bearer "+jwt
                    }
 
                })
                console.log(res.data);   
                    setLists(res.data);
+                   setTimeout(() => {
+                   setShowloader(false);
+                       
+                   }, 3000);
             } catch (error) {
                console.log(error);
            }
@@ -32,12 +37,24 @@ const Home  = ({type}) => {
     return (
         <div className='home'>
          <Navbar></Navbar>
-            <Featured type={type}/>
-            {
-                lists?.map((list , id)=>(
+         {showloader?
+         <div style={{"height":"100vh" , "width":"100vw" }}>
+             <img src={loader} style={{"display":"block", "margin":"auto"}}></img>
+             </div>
+         
+         :
+         <div>
+             <Featured type={type} setGenre={setGenre}/>
+            
+                {lists?.map((list , id)=>(
                     <List list = {list} key = {id}/>
-                ))
-            }
+                ))}
+         </div>
+         
+                
+        }
+            
+            
          </div>
     )
 }

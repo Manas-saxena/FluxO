@@ -16,7 +16,7 @@ router.post("/register" ,async(req,res) =>{
          const user = await newUser.save();
          res.status(201).json(user)
     } catch (error) {
-       
+       console.log(error.response);
         res.status(500).json(error);
     }
    
@@ -29,7 +29,7 @@ router.post("/login" , async(req,res)=>{
 
         const user = await User.findOne({email});
 
-        !user && res.status(401).json("Wrong Credentials");
+        !user && res.status(401).send("Wrong Credentials");
 
             const accessToken = jwt.sign({id:user._id , isAdmin:user.isAdmin},
                 process.env.SECRET_KEY,{expiresIn:"5d"});

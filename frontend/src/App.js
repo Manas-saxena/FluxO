@@ -4,8 +4,11 @@ import Register from './component/register/Register';
 import Login from './component/login/Login';
 import Home from './pages/Home/Home';
 import Watch from './pages/watch/Watch'
+import { useContext } from 'react';
+import {AuthContext} from "./authContext/AuthContext";
 function App() {
-  const user = true;
+ const {user} = useContext(AuthContext);
+ console.log(user);
   return (
     <Router>
       <Switch>
