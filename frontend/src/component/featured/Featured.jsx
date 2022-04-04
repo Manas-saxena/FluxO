@@ -1,6 +1,7 @@
 import React,{useEffect , useState} from "react";
 import "./featured.scss";
 import axios from "axios";
+import {Link} from "react-router-dom"
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlined from '@mui/icons-material/InfoOutlined';
 const Featured = ({type , setGenre}) => {
@@ -55,16 +56,19 @@ const Featured = ({type , setGenre}) => {
         style={{objectFit:"cover"}}
       />
       <div className="info">
-          {/* <img src={content.imgTitle} alt="imgtitle" /> */}
+          {/* <h1>{content.title}</h1> */}
           <br />
       <span style={{color:"white"}} className='desc'>
          {content.desc}
       </span>
       <div className="buttons">
-          <button className='play'>
+        <Link to={{pathname:`/watch/${content._id}` , movie:content}} >
+        <button className='play'>
               <PlayArrowIcon/>
               <span>Play</span>
           </button>
+        </Link>
+          
           <button className='more'>
         <InfoOutlined/>
         <span>Info</span>

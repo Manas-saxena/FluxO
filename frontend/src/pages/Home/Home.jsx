@@ -38,8 +38,8 @@ const Home  = ({type}) => {
         <div className='home'>
          <Navbar></Navbar>
          {showloader?
-         <div style={{"height":"100vh" , "width":"100vw" }}>
-             <img src={loader} style={{"display":"block", "margin":"auto"}}></img>
+         <div className='loaderContainer'>
+             <img src={loader} className ='loader'></img>
              </div>
          
          :

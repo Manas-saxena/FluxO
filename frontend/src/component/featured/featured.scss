@@ -27,19 +27,20 @@
         object-fit: cover;
     }
     .info{
-        width: 35%;
+        width: 55%;
         position: absolute;
         left: 50px;
         bottom: 100px;
-        img{
-            width: 400px;
-        }
         .desc{
             margin: 20px 0px;
-        
         }
         .buttons{
             display: flex;
+            margin-top: 20px;
+            a{
+                text-decoration: none;
+                color:black
+            }
             button{
                 padding: 10px 20px;
                 border:none;
@@ -63,6 +64,15 @@
                 }
             }
 
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .featured{
+        .info{
+            
+           display: none;
         }
     }
 }
