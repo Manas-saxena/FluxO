@@ -1,5 +1,5 @@
 import axios from "axios";
-import React ,{useRef,useState} from "react";
+import React ,{useState} from "react";
 import {useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import "./register.scss";
@@ -124,11 +124,11 @@ export default function Register() {
             !fieldchange ? (
                 <div className="input">
             <input type="email" placeholder='email address' name="email" autoComplete="off" onChange={onValueChange} />
-            <button className='registerButton' onClick={()=>{setFieldchange(true)}}>Get Started</button>
+            <button className='registerButton input-form' onClick={()=>{setFieldchange(true)}}>Get Started</button>
         </div>
             ):<form className="input" autoComplete="off">
-            <input type="password" placeholder='password'name="password" onChange={onValueChange} />
-            <input type="text" placeholder='User name' name="username" autoComplete="off" onChange={onValueChange} />
+            <input type="password"  placeholder='password'name="password" onChange={onValueChange} />
+            <input  type="text" placeholder='User name' name="username" autoComplete="off" onChange={onValueChange} />
             <button className='registerButton' onClick={handleFinish}>Start</button>
         </form>
         }

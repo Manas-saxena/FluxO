@@ -3,8 +3,8 @@ import React,{useState ,useEffect} from 'react'
 import "./listItem.scss" 
 import axios from 'axios'
 import {Link} from "react-router-dom"
-const ListItem = ({key ,item}) => {
-    let index = key;
+const ListItem = ({index ,item}) => {
+    // let index = key;
     const [isHovered , setIsHovered] = useState(false);
     const [movie, setMovie] = useState({});
     useEffect(() => {
@@ -29,10 +29,13 @@ const ListItem = ({key ,item}) => {
             <img src = {movie.img} alt=""/>
                 {isHovered && (
                     <>
-                    <iframe src={movie.video} allow='autoplay' frameborder="0" ></iframe>
+                    {/* <video autoPlay controls={false}>
+                        <source  src={movie.video} />
+                    </video> */}
+                    <iframe src={movie.video} title="trailer" allow='autoplay' frameBorder='false' ></iframe>
             <div className="itemInfo">
                 <div className="icons">
-                    <Link  to={{pathname:`/watch/${movie._id}` , movie:movie}} style={{"color":"white"}}> <PlayArrow className="icon"/></Link>
+                     <PlayArrow className="icon"  />
                    
                     <Add className="icon"/>
                     <ThumbUpOutlined className="icon"/>

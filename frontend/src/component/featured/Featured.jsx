@@ -16,14 +16,13 @@ const Featured = ({type , setGenre}) => {
             token :"Bearer "+jwt
           }
         })
-        console.log(res.data);
         setContent(res.data[0]);
       } catch (error) {
         console.log(error)
       }
     }
      getRandomContent();
-  },[])
+  },[type])
   return (
     <div className="featured">
         {

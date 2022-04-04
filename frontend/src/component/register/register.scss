@@ -13,7 +13,9 @@
             
         }
         .logo{
-            height: 40px;
+           height:60px;
+            width :120px;
+            margin-right: 20px;
         }   
         .loginButton{
             background-color: red;
@@ -81,4 +83,43 @@
 
         }
 
+}
+
+@media (max-width : 600px)
+{
+    .container{
+        .input{
+            flex-direction: column;
+            justify-content: space-between !important;
+            height : 200px !important;
+            background: transparent !important;
+            input{
+                height: 60px  !important;
+                margin:20px 0 !important;
+                border-radius: 5px;
+            }
+            .registerButton{
+                width: 100px;
+                height: 60px  !important;
+                border-radius: 5px;
+            }
+        }
+        input {
+            flex: 5 !important;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        .input-form
+        {
+            flex: 5 1 !important;
+            width: 150px  !important;
+        }
+    }
+}
+@media (max-width : 750px){
+    .container{
+        h2,p{
+            display: none;
+        }
+    }
 }

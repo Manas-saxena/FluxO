@@ -20,7 +20,6 @@ const List = ({list}) => {
             listRef.current.style.transform = `translateX(${230 + distance}px)`
         }
     }
-    console.log(list.length )
     return (
         <div className='list'>
             <span className='listtitle'>{list.title}</span>
@@ -28,8 +27,8 @@ const List = ({list}) => {
                 <ArrowBackIosOutlined className="sliderArrow left " onClick={()=>handleclick("left")} ></ArrowBackIosOutlined>
                 <div className='listitem' ref={listRef}>
                 {
-                    list.content.map((item,i)=>(
-                <ListItem key = {i} item ={item} ></ListItem>
+                    list.content.map((item,i )=>(
+                <ListItem key = {i} index = {i} item ={item} ></ListItem>
 
     ))
                 }

@@ -3,7 +3,7 @@ import "./login.scss";
 import {login} from "../../../src/authContext/apiCalls"
 import {AuthContext} from "../../../src/authContext/AuthContext"
 import {Link} from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import logo from "../../useables/manas_logo_transparent.png"
 export default function Login() {
    const [email, setEmail] = useState("");
@@ -12,7 +12,6 @@ export default function Login() {
    const handlesubmit = async (e)=>{
     e.preventDefault();
     login({email,password} , dispatch);
-    console.log(dispatch);
    }
 
   return (

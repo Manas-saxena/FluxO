@@ -21,12 +21,13 @@ const Home  = ({type}) => {
                    }
 
                })
-               console.log(res.data);   
-                   setLists(res.data);
+            //    console.log(res.data);   
                    setTimeout(() => {
                    setShowloader(false);
                        
                    }, 3000);
+                   setLists(res.data);
+
             } catch (error) {
                console.log(error);
            }
@@ -39,7 +40,7 @@ const Home  = ({type}) => {
          <Navbar></Navbar>
          {showloader?
          <div className='loaderContainer'>
-             <img src={loader} className ='loader'></img>
+             <img src={loader} className ='loader' alt='loader'></img>
              </div>
          
          :
