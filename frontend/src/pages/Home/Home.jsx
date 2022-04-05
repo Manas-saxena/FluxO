@@ -10,9 +10,13 @@ const Home  = ({type}) => {
     const [genre, setGenre] = useState(null);
     const [showloader , setShowloader] = useState(false);
     useEffect(() => {
+           
+
+           let mounted = true;
+
        const getRandomLists = async ()=>{
-           setShowloader(true);
            try {
+            setShowloader(true);
               const jwt = JSON.parse(localStorage.getItem("user")).accessToken;
                 
               const res = await axios.get(`http://localhost:8000/api/list${type ? "?type=" + type:""}${genre ? "&genre=" +genre:""}`,{   
@@ -22,17 +26,27 @@ const Home  = ({type}) => {
 
                })
             //    console.log(res.data);   
-                   setTimeout(() => {
-                   setShowloader(false);
-                       
-                   }, 3000);
+                  
+
+                   if(mounted){
+
+                   
+                        setShowloader(false);
                    setLists(res.data);
 
+
+                   }
+
+                   
             } catch (error) {
                console.log(error);
            }
        }
-         getRandomLists();
+
+       getRandomLists();
+       return () =>{ mounted = false };
+
+
     },[type,genre])
   
     return (

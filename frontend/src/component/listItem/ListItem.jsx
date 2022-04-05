@@ -8,6 +8,7 @@ const ListItem = ({index ,item}) => {
     const [isHovered , setIsHovered] = useState(false);
     const [movie, setMovie] = useState({});
     useEffect(() => {
+        let mounted = true;
         const getMovie = async() =>{
             try {
                 const jwt = JSON.parse(localStorage.getItem("user")).accessToken;
@@ -16,12 +17,18 @@ const ListItem = ({index ,item}) => {
                     token: "Bearer " + jwt,
                    }
                 })
+
+                if(mounted)
+                {
                 setMovie(res.data);
+
+                }
             } catch (error) {
                console.log(error); 
             }
         }
         getMovie();
+        return () => mounted = false;
     }, [item])
     return (
         <Link to={{pathname:`/watch/${movie._id}` , movie:movie}}>
